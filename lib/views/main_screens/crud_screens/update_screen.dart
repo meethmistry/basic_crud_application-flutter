@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddNewStudent extends StatefulWidget {
-  const AddNewStudent({super.key});
+class UpdateStudent extends StatefulWidget {
+  const UpdateStudent({super.key, this.studentData});
+  final dynamic studentData;
 
   @override
-  State<AddNewStudent> createState() => _AddNewStudentState();
+  State<UpdateStudent> createState() => _UpdateStudentState();
 }
 
-class _AddNewStudentState extends State<AddNewStudent> {
+class _UpdateStudentState extends State<UpdateStudent> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _fullName = TextEditingController();
@@ -73,16 +74,15 @@ class _AddNewStudentState extends State<AddNewStudent> {
       ));
       try {
         await _auth
-            .addNewStudent(
+            .updateStudent(
                 _fullName.text.toString(),
                 _email.text.toString(),
                 _number.text.toString(),
                 _age.text.toString(),
                 _address.text.toString(),
-                selectedImage)
+                widget.studentData['studentId'].toString())
             .whenComplete(() {
-          showSnake("New Student Added Successfull.", Colors.blueAccent);
-          _formKey.currentState!.reset();
+          showSnake("Student Updated Successfull.", Colors.blueAccent);
           selectedImage = null;
           EasyLoading.dismiss();
           Navigator.pop(context);
@@ -98,13 +98,25 @@ class _AddNewStudentState extends State<AddNewStudent> {
   }
 
   @override
+  void initState() {
+    setState(() {
+      _fullName.text = widget.studentData['studentName'];
+      _email.text = widget.studentData['studentEmail'];
+      _number.text = widget.studentData['studentNumber'];
+      _age.text = widget.studentData['studentAge'];
+      _address.text = widget.studentData['studentAddress'];
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.greenAccent.shade700,
         foregroundColor: Colors.white,
         title: const Text(
-          "Add New Student",
+          "Update Student",
           style: TextStyle(
               fontSize: 20, letterSpacing: 3, fontWeight: FontWeight.bold),
         ),
@@ -124,25 +136,12 @@ class _AddNewStudentState extends State<AddNewStudent> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    selectedImage == null
-                        ? CircleAvatar(
-                            radius: 64,
-                            backgroundColor: Colors.greenAccent.shade700,
-                            child: IconButton(
-                                onPressed: () {
-                                  selectImage();
-                                },
-                                icon: const Icon(
-                                  Icons.photo,
-                                  color: Colors.white,
-                                  size: 30,
-                                )),
-                          )
-                        : CircleAvatar(
-                            radius: 64,
-                            backgroundColor: Colors.greenAccent.shade700,
-                            backgroundImage: MemoryImage(selectedImage!),
-                          ),
+                    Image.network(
+                      widget.studentData['studentImageUrl'],
+                      fit: BoxFit.cover,
+                      cacheHeight: 120,
+                      cacheWidth: 120,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 8),
@@ -252,7 +251,7 @@ class _AddNewStudentState extends State<AddNewStudent> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: const Text(
-                          "Add New Student",
+                          "Update Data",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

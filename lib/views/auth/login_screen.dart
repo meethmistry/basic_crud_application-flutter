@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   loginUser() async {
     if (_formKey.currentState!.validate()) {
       EasyLoading.show(
-          indicator: CircularProgressIndicator(
+          indicator: const CircularProgressIndicator(
         color: Colors.greenAccent,
         backgroundColor: Colors.transparent,
       ));
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
             EasyLoading.dismiss();
-            return MainHomeScreen();
+            return const MainHomeScreen();
           },
         ));
       } else {

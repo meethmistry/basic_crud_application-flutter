@@ -76,4 +76,35 @@ class StudentController {
     }
     return res;
   }
+
+    Future<String> updateStudent(String fullName, String email, String number,
+      String age, String address, String studentId) async {
+    String res = "";
+    try {
+      if (fullName.isNotEmpty &&
+          email.isNotEmpty &&
+          number.isNotEmpty &&
+          age.isNotEmpty &&
+          address.isNotEmpty 
+          ) {
+        await _fireStore
+            .collection('students')
+            .doc(studentId).update({    
+          'studentName': fullName,
+          'studentEmail': email,
+          'studentNumber': number,
+          'studentAge': age,
+          'studentAddress': address,
+          });
+        res = "suceess";
+      } else {
+        res = "All fields must be filled.";
+      }
+    } catch (e) {
+      res = e.toString();
+    }
+    return res;
+  }
+
+
 }
