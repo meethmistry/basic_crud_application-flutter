@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:basic_crud_application/controllers/teachers_controllers.dart';
 import 'package:basic_crud_application/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -61,6 +62,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   saveUser() async {
     if (_formKey.currentState!.validate()) {
+      EasyLoading.show(
+          indicator: CircularProgressIndicator(
+        color: Colors.greenAccent,
+        backgroundColor: Colors.transparent,
+      ));
       await _auth
           .signUpUser(_fullName.text, _email.text, _number.text, _password.text,
               selectedImage)
@@ -68,11 +74,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         setState(() {
           _formKey.currentState!.reset();
           selectedImage = null;
+          EasyLoading.dismiss();
         });
         showSnake("Registration Successfull.", Colors.blueAccent);
       });
     } else {
       showSnake("Fill All Data.", Colors.redAccent.shade700);
+      EasyLoading.dismiss();
     }
   }
 
@@ -89,7 +97,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               Center(
                 child: Container(
                   margin: const EdgeInsets.only(top: 80),
-                  padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 3, vertical: 15),
                   alignment: Alignment.center,
                   height: 700,
                   width: MediaQuery.sizeOf(context).width - 25,
@@ -113,26 +122,28 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           const SizedBox(
                             height: 15,
                           ),
-                         selectedImage == null ?
-                          CircleAvatar(
-                            radius: 64,
-                            backgroundColor: Colors.greenAccent.shade700,
-                            child: IconButton(
-                                onPressed: () {
-                                  selectImage();
-                                },
-                                icon: const Icon(
-                                  Icons.photo,
-                                  color: Colors.white,
-                                  size: 30,
-                                )),
-                          ) : CircleAvatar(
-                            radius: 64,
-                            backgroundColor: Colors.greenAccent.shade700,
-                            backgroundImage: MemoryImage(selectedImage!),
-                          ),
+                          selectedImage == null
+                              ? CircleAvatar(
+                                  radius: 64,
+                                  backgroundColor: Colors.greenAccent.shade700,
+                                  child: IconButton(
+                                      onPressed: () {
+                                        selectImage();
+                                      },
+                                      icon: const Icon(
+                                        Icons.photo,
+                                        color: Colors.white,
+                                        size: 30,
+                                      )),
+                                )
+                              : CircleAvatar(
+                                  radius: 64,
+                                  backgroundColor: Colors.greenAccent.shade700,
+                                  backgroundImage: MemoryImage(selectedImage!),
+                                ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 8),
                             child: TextFormField(
                               controller: _fullName,
                               decoration: const InputDecoration(
@@ -149,7 +160,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 8),
                             child: TextFormField(
                               controller: _email,
                               decoration: const InputDecoration(
@@ -166,7 +178,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 8),
                             child: TextFormField(
                               controller: _number,
                               decoration: const InputDecoration(
@@ -183,7 +196,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 8),
                             child: TextFormField(
                               controller: _password,
                               decoration: const InputDecoration(

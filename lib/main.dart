@@ -1,7 +1,8 @@
 import 'package:basic_crud_application/firebase_options.dart';
-import 'package:basic_crud_application/views/auth/registration_screen.dart';
+import 'package:basic_crud_application/views/auth/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() async  {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: RegistrationScreen()
+      home: const LoginScreen(),
+      builder: EasyLoading.init(),
     );
   }
 }

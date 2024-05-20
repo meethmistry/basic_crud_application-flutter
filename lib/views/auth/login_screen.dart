@@ -2,6 +2,7 @@ import 'package:basic_crud_application/controllers/teachers_controllers.dart';
 import 'package:basic_crud_application/views/auth/registration_screen.dart';
 import 'package:basic_crud_application/views/main_screens/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -38,17 +39,25 @@ class _LoginScreenState extends State<LoginScreen> {
 
   loginUser() async {
     if (_formKey.currentState!.validate()) {
+      EasyLoading.show(
+          indicator: CircularProgressIndicator(
+        color: Colors.greenAccent,
+        backgroundColor: Colors.transparent,
+      ));
       String res = await _auth.loginUsers(_email.text, _password.text);
       if (res == "Success") {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
+            EasyLoading.dismiss();
             return MainHomeScreen();
           },
         ));
       } else {
+        EasyLoading.dismiss();
         showSnake("Inccorect email or password.", Colors.redAccent.shade700);
       }
     } else {
+      EasyLoading.dismiss();
       showSnake("Login data are not valid", Colors.redAccent.shade700);
     }
   }
