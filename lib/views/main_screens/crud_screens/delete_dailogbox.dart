@@ -30,12 +30,13 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: Colors.white,
       content: Container(
         alignment: Alignment.center,
         height: 150,
         width: 280,
         decoration: BoxDecoration(
-          color: Colors.greenAccent.shade700,
+          color: Colors.lightBlueAccent,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Text(
@@ -62,7 +63,7 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
                 height: 45,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.greenAccent.shade700,
+                  color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
@@ -80,13 +81,13 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
               onTap: () async {
                 EasyLoading.show(
                     indicator: const CircularProgressIndicator(
-                  color: Colors.greenAccent,
+                  color: Colors.lightBlueAccent,
                   backgroundColor: Colors.transparent,
                 ));
                 await _auth
                     .deleteStudent(widget.studentData['studentId'].toString());
                 showSnake(
-                    "Student Deleted Successfully", Colors.redAccent.shade700);
+                    "Student Deleted Successfully", Colors.redAccent);
                 EasyLoading.dismiss();
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
@@ -100,7 +101,7 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
                 height: 45,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.greenAccent.shade700,
+                  color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(

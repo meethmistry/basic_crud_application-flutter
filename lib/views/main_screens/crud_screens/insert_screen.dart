@@ -68,7 +68,7 @@ class _AddNewStudentState extends State<AddNewStudent> {
     if (_formKey.currentState!.validate()) {
       EasyLoading.show(
           indicator: const CircularProgressIndicator(
-        color: Colors.greenAccent,
+        color: Colors.lightBlueAccent,
         backgroundColor: Colors.transparent,
       ));
       try {
@@ -81,7 +81,7 @@ class _AddNewStudentState extends State<AddNewStudent> {
                 _address.text.toString(),
                 selectedImage)
             .whenComplete(() {
-          showSnake("New Student Added Successfull.", Colors.blueAccent);
+          showSnake("New Student Added Successfull.", Colors.greenAccent);
           _formKey.currentState!.reset();
           selectedImage = null;
           EasyLoading.dismiss();
@@ -93,7 +93,7 @@ class _AddNewStudentState extends State<AddNewStudent> {
       }
     } else {
       EasyLoading.dismiss();
-      showSnake("Enter Vailed Data.", Colors.redAccent.shade700);
+      showSnake("Enter Vailed Data.", Colors.redAccent);
     }
   }
 
@@ -101,7 +101,7 @@ class _AddNewStudentState extends State<AddNewStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent.shade700,
+        backgroundColor: Colors.lightBlueAccent,
         foregroundColor: Colors.white,
         title: const Text(
           "Add New Student",
@@ -127,7 +127,7 @@ class _AddNewStudentState extends State<AddNewStudent> {
                     selectedImage == null
                         ? CircleAvatar(
                             radius: 64,
-                            backgroundColor: Colors.greenAccent.shade700,
+                            backgroundColor: Colors.lightBlueAccent,
                             child: IconButton(
                                 onPressed: () {
                                   selectImage();
@@ -248,7 +248,7 @@ class _AddNewStudentState extends State<AddNewStudent> {
                         height: 60,
                         width: MediaQuery.sizeOf(context).width - 45,
                         decoration: BoxDecoration(
-                          color: Colors.greenAccent.shade700,
+                          color: Colors.lightBlueAccent,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: const Text(

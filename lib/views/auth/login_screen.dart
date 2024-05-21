@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       EasyLoading.show(
           indicator: const CircularProgressIndicator(
-        color: Colors.greenAccent,
+        color: Colors.lightBlueAccent,
         backgroundColor: Colors.transparent,
       ));
       String res = await _auth.loginUsers(_email.text, _password.text);
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent.shade700,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -82,6 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.sizeOf(context).width - 25,
                   decoration: BoxDecoration(
                     color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 15,
+                        color: Colors.grey,
+                        offset: Offset(3, 5)
+                      ),
+                    ],
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
@@ -91,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           "LogIn",
                           style: TextStyle(
-                              color: Colors.greenAccent.shade700,
+                              color: Colors.lightBlueAccent,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 2,
                               fontSize: 28),
@@ -146,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 60,
                             width: MediaQuery.sizeOf(context).width - 45,
                             decoration: BoxDecoration(
-                              color: Colors.greenAccent.shade700,
+                              color: Colors.lightBlueAccent,
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: const Text(
@@ -177,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Text(
                                   "SignUp Now",
                                   style: TextStyle(
-                                    color: Colors.greenAccent.shade700,
+                                    color: Colors.lightBlueAccent,
                                     fontWeight: FontWeight.bold,
                                     // letterSpacing: 2,
                                   ),

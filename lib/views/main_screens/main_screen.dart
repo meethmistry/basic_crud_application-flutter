@@ -29,7 +29,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 }),
               },
           unselectedItemColor: Colors.black,
-          selectedItemColor: Colors.greenAccent.shade700,
+          selectedItemColor: Colors.lightBlueAccent,
           items: const [
             BottomNavigationBarItem(
                 icon: Icon(

@@ -11,7 +11,7 @@ class DisplayAllDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 4,
-        backgroundColor: Colors.greenAccent.shade700,
+        backgroundColor: Colors.lightBlueAccent,
         foregroundColor: Colors.white,
         title: const Text(
           "Student Details",
@@ -40,7 +40,7 @@ class DisplayAllDetails extends StatelessWidget {
                   icon: Icon(
                     Icons.delete,
                     size: 30,
-                    color: Colors.greenAccent.shade700,
+                    color: Colors.lightBlueAccent,
                   ),
                 ),
                 const SizedBox(
@@ -52,8 +52,9 @@ class DisplayAllDetails extends StatelessWidget {
               height: 20,
             ),
             CircleAvatar(
-              backgroundImage: NetworkImage(
-                  studentData['studentImageUrl'].toString()),
+                backgroundImage: studentData['studentImageUrl'] != null ? NetworkImage(
+                  studentData['studentImageUrl'].toString()) : null,
+                backgroundColor: studentData['studentImageUrl'] != null ? null : Colors.lightBlueAccent,  
               radius: 70,
             ),
             const SizedBox(
@@ -180,7 +181,7 @@ class DisplayAllDetails extends StatelessWidget {
           height: 60,
           width: MediaQuery.sizeOf(context).width - 45,
           decoration: BoxDecoration(
-              color: Colors.greenAccent.shade700,
+              color: Colors.lightBlueAccent,
               borderRadius: BorderRadius.circular(25)),
           child: Text(
             "Update Student Details",

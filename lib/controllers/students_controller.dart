@@ -16,6 +16,8 @@ class StudentController {
       XFile? file = await imagePicker.pickImage(source: source);
       if (file != null) {
         return await file.readAsBytes();
+      } else {
+        return null;
       }
     } catch (e) {
       print('Error picking image: $e');
@@ -50,8 +52,7 @@ class StudentController {
           email.isNotEmpty &&
           number.isNotEmpty &&
           age.isNotEmpty &&
-          address.isNotEmpty &&
-          image != null) {
+          address.isNotEmpty) {
         String? storeImage = await uploadProfileImageToStorage(image);
         final studentId = Uuid().v4();
         await _fireStore.collection('students').doc(studentId).set({
@@ -62,7 +63,7 @@ class StudentController {
           'studentNumber': number,
           'studentAge': age,
           'studentAddress': address,
-          'studentImageUrl': storeImage,
+          'studentImageUrl': storeImage == null ? null : storeImage,
         });
         res = "suceess";
       } else {

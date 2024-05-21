@@ -87,7 +87,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent.shade700,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -104,6 +104,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   width: MediaQuery.sizeOf(context).width - 25,
                   decoration: BoxDecoration(
                     color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 15,
+                        color: Colors.grey,
+                        offset: Offset(3, 5)
+                      ),
+                    ],
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
@@ -114,7 +121,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           Text(
                             "SignUp",
                             style: TextStyle(
-                                color: Colors.greenAccent.shade700,
+                                color: Colors.lightBlueAccent,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 2,
                                 fontSize: 28),
@@ -125,7 +132,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           selectedImage == null
                               ? CircleAvatar(
                                   radius: 64,
-                                  backgroundColor: Colors.greenAccent.shade700,
+                                  backgroundColor: Colors.lightBlueAccent,
                                   child: IconButton(
                                       onPressed: () {
                                         selectImage();
@@ -138,7 +145,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 )
                               : CircleAvatar(
                                   radius: 64,
-                                  backgroundColor: Colors.greenAccent.shade700,
+                                  backgroundColor: Colors.lightBlueAccent,
                                   backgroundImage: MemoryImage(selectedImage!),
                                 ),
                           Padding(
@@ -224,7 +231,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               height: 60,
                               width: MediaQuery.sizeOf(context).width - 45,
                               decoration: BoxDecoration(
-                                color: Colors.greenAccent.shade700,
+                                color: Colors.lightBlueAccent,
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: const Text(
@@ -255,7 +262,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   child: Text(
                                     "logIn Now",
                                     style: TextStyle(
-                                      color: Colors.greenAccent.shade700,
+                                      color: Colors.lightBlueAccent,
                                       fontWeight: FontWeight.bold,
                                       // letterSpacing: 2,
                                     ),

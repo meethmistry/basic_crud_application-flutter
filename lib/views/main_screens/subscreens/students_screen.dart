@@ -21,7 +21,7 @@ class _StudentsScreenState extends State<StudentsScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 4,
-        backgroundColor: Colors.greenAccent.shade700,
+        backgroundColor: Colors.lightBlueAccent,
         foregroundColor: Colors.white,
         title: const Text(
           "Students",
@@ -99,7 +99,7 @@ class _StudentsScreenState extends State<StudentsScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.greenAccent.shade700,
+        backgroundColor: Colors.lightBlueAccent,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {

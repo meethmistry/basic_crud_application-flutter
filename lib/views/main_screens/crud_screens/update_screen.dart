@@ -69,7 +69,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
     if (_formKey.currentState!.validate()) {
       EasyLoading.show(
           indicator: const CircularProgressIndicator(
-        color: Colors.greenAccent,
+        color: Colors.lightBlueAccent,
         backgroundColor: Colors.transparent,
       ));
       try {
@@ -82,7 +82,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
                 _address.text.toString(),
                 widget.studentData['studentId'].toString())
             .whenComplete(() {
-          showSnake("Student Updated Successfull.", Colors.blueAccent);
+          showSnake("Student Updated Successfull.", Colors.greenAccent);
           selectedImage = null;
           EasyLoading.dismiss();
           Navigator.pop(context);
@@ -93,7 +93,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
       }
     } else {
       EasyLoading.dismiss();
-      showSnake("Enter Vailed Data.", Colors.redAccent.shade700);
+      showSnake("Enter Vailed Data.", Colors.redAccent);
     }
   }
 
@@ -113,7 +113,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent.shade700,
+        backgroundColor: Colors.lightBlueAccent,
         foregroundColor: Colors.white,
         title: const Text(
           "Update Student",
@@ -136,12 +136,32 @@ class _UpdateStudentState extends State<UpdateStudent> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.network(
-                      widget.studentData['studentImageUrl'],
-                      fit: BoxFit.cover,
-                      cacheHeight: 120,
-                      cacheWidth: 120,
-                    ),
+                    widget.studentData['studentImageUrl'] != null
+                        ? Image.network(
+                            widget.studentData['studentImageUrl'],
+                            fit: BoxFit.cover,
+                            cacheHeight: 120,
+                            cacheWidth: 120,
+                          )
+                        : selectedImage != null
+                            ? Image.memory(
+                                selectedImage!,
+                                width: 120,
+                                height: 120,
+                              )
+                            : CircleAvatar(
+                                radius: 64,
+                                backgroundColor: Colors.lightBlueAccent,
+                                child: IconButton(
+                                    onPressed: () {
+                                      selectImage();
+                                    },
+                                    icon: const Icon(
+                                      Icons.photo,
+                                      color: Colors.white,
+                                      size: 30,
+                                    )),
+                              ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 8),
@@ -247,7 +267,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
                         height: 60,
                         width: MediaQuery.sizeOf(context).width - 45,
                         decoration: BoxDecoration(
-                          color: Colors.greenAccent.shade700,
+                          color: Colors.lightBlueAccent,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: const Text(
