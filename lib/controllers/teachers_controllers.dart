@@ -88,4 +88,24 @@ class AuthController {
     }
     return res;
   }
+
+  Future<String> updateTeacher(
+      String fullName, String email, String number, String teacherId) async {
+    String res = "";
+    try {
+      if (fullName.isNotEmpty && email.isNotEmpty && number.isNotEmpty) {
+        await _fireStore.collection('teachers').doc(teacherId).update({
+          'fullName': fullName,
+          'email': email,
+          'number': number,
+        });
+        res = "suceess";
+      } else {
+        res = "All fields must be filled.";
+      }
+    } catch (e) {
+      res = e.toString();
+    }
+    return res;
+  }
 }

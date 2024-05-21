@@ -1,4 +1,4 @@
-import 'package:basic_crud_application/views/main_screens/crud_screens/update_screen.dart';
+import 'package:basic_crud_application/views/main_screens/crud_screens/update_students_screen.dart';
 import 'package:basic_crud_application/views/main_screens/dailogbox/delete_dailogbox.dart';
 import 'package:flutter/material.dart';
 

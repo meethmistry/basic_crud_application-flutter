@@ -70,7 +70,6 @@ class _UpdateStudentState extends State<UpdateStudent> {
       EasyLoading.show(
           indicator: const CircularProgressIndicator(
         color: Colors.lightBlueAccent,
-        backgroundColor: Colors.transparent,
       ));
       try {
         await _auth

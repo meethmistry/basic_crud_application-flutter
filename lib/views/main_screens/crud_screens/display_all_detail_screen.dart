@@ -1,5 +1,5 @@
 import 'package:basic_crud_application/views/main_screens/dailogbox/delete_dailogbox.dart';
-import 'package:basic_crud_application/views/main_screens/crud_screens/update_screen.dart';
+import 'package:basic_crud_application/views/main_screens/crud_screens/update_students_screen.dart';
 import 'package:flutter/material.dart';
 
 class DisplayAllDetails extends StatelessWidget {
@@ -29,11 +29,13 @@ class DisplayAllDetails extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  onPressed: ()  {
+                  onPressed: () {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return DeleteDailogbox(studentData: studentData,);
+                        return DeleteDailogbox(
+                          studentData: studentData,
+                        );
                       },
                     );
                   },
@@ -52,9 +54,12 @@ class DisplayAllDetails extends StatelessWidget {
               height: 20,
             ),
             CircleAvatar(
-                backgroundImage: studentData['studentImageUrl'] != null ? NetworkImage(
-                  studentData['studentImageUrl'].toString()) : null,
-                backgroundColor: studentData['studentImageUrl'] != null ? null : Colors.lightBlueAccent,  
+              backgroundImage: studentData['studentImageUrl'] != null
+                  ? NetworkImage(studentData['studentImageUrl'].toString())
+                  : null,
+              backgroundColor: studentData['studentImageUrl'] != null
+                  ? null
+                  : Colors.lightBlueAccent,
               radius: 70,
             ),
             const SizedBox(
@@ -81,7 +86,7 @@ class DisplayAllDetails extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Divider(
-                color: Colors.greenAccent.shade700,
+                color: Colors.lightBlueAccent,
                 height: 2.5,
               ),
             ),
