@@ -1,15 +1,11 @@
+import 'package:basic_crud_application/views/main_screens/crud_screens/delete_dailogbox.dart';
 import 'package:basic_crud_application/views/main_screens/crud_screens/update_screen.dart';
 import 'package:flutter/material.dart';
 
-class DisplayAllDetails extends StatefulWidget {
+class DisplayAllDetails extends StatelessWidget {
   const DisplayAllDetails({super.key, this.studentData});
   final dynamic studentData;
 
-  @override
-  State<DisplayAllDetails> createState() => _DisplayAllDetailsState();
-}
-
-class _DisplayAllDetailsState extends State<DisplayAllDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +29,14 @@ class _DisplayAllDetailsState extends State<DisplayAllDetails> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return ShowDailogBox(studentData: studentData,);
+                      },
+                    );
+                  },
                   icon: Icon(
                     Icons.delete,
                     size: 30,
@@ -50,7 +53,7 @@ class _DisplayAllDetailsState extends State<DisplayAllDetails> {
             ),
             CircleAvatar(
               backgroundImage: NetworkImage(
-                  widget.studentData['studentImageUrl'].toString()),
+                  studentData['studentImageUrl'].toString()),
               radius: 70,
             ),
             const SizedBox(
@@ -60,12 +63,12 @@ class _DisplayAllDetailsState extends State<DisplayAllDetails> {
               padding: const EdgeInsets.only(left: 35),
               child: ListTile(
                 title: Text(
-                  widget.studentData['studentName'].toString(),
+                  studentData['studentName'].toString(),
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 subtitle: Text(
-                  widget.studentData['studentEmail'].toString(),
+                  studentData['studentEmail'].toString(),
                   style: const TextStyle(
                       fontWeight: FontWeight.w700, fontSize: 15),
                 ),
@@ -95,7 +98,7 @@ class _DisplayAllDetailsState extends State<DisplayAllDetails> {
                   ),
                   Flexible(
                     child: Text(
-                      widget.studentData['studentId'].toString(),
+                      studentData['studentId'].toString(),
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.w500),
                       maxLines: null,
@@ -114,7 +117,7 @@ class _DisplayAllDetailsState extends State<DisplayAllDetails> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    widget.studentData['studentAge'].toString(),
+                    studentData['studentAge'].toString(),
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.w500),
                   ),
@@ -132,7 +135,7 @@ class _DisplayAllDetailsState extends State<DisplayAllDetails> {
                   ),
                   Flexible(
                     child: Text(
-                      widget.studentData['studentAddress'].toString(),
+                      studentData['studentAddress'].toString(),
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.w500),
                       maxLines: null,
@@ -151,7 +154,7 @@ class _DisplayAllDetailsState extends State<DisplayAllDetails> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    widget.studentData['studentNumber'].toString(),
+                    studentData['studentNumber'].toString(),
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.w500),
                   ),
@@ -166,7 +169,7 @@ class _DisplayAllDetailsState extends State<DisplayAllDetails> {
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {
               return UpdateStudent(
-                studentData: widget.studentData,
+                studentData: studentData,
               );
             },
           ));

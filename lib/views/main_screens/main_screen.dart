@@ -1,5 +1,4 @@
 import 'package:basic_crud_application/views/main_screens/subscreens/account_screen.dart';
-import 'package:basic_crud_application/views/main_screens/subscreens/search_screen.dart';
 import 'package:basic_crud_application/views/main_screens/subscreens/students_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,6 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   int _pageIndex = 0;
   final List<Widget> _page = [
     const StudentsScreen(),
-    const SearchStudentScreen(),
     const AccountScreen(),
   ];
   @override
@@ -38,11 +36,6 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   Icons.home_filled,
                 ),
                 label: 'Students'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.search_rounded,
-                ),
-                label: 'Search'),
             BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.profile_circled), label: 'Profile'),
           ]),

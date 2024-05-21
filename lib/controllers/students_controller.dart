@@ -54,10 +54,7 @@ class StudentController {
           image != null) {
         String? storeImage = await uploadProfileImageToStorage(image);
         final studentId = Uuid().v4();
-        await _fireStore
-            .collection('students')
-            .doc(studentId)
-            .set({
+        await _fireStore.collection('students').doc(studentId).set({
           'mentorId': FirebaseAuth.instance.currentUser!.uid,
           'studentId': studentId,
           'studentName': fullName,
@@ -77,7 +74,7 @@ class StudentController {
     return res;
   }
 
-    Future<String> updateStudent(String fullName, String email, String number,
+  Future<String> updateStudent(String fullName, String email, String number,
       String age, String address, String studentId) async {
     String res = "";
     try {
@@ -85,17 +82,14 @@ class StudentController {
           email.isNotEmpty &&
           number.isNotEmpty &&
           age.isNotEmpty &&
-          address.isNotEmpty 
-          ) {
-        await _fireStore
-            .collection('students')
-            .doc(studentId).update({    
+          address.isNotEmpty) {
+        await _fireStore.collection('students').doc(studentId).update({
           'studentName': fullName,
           'studentEmail': email,
           'studentNumber': number,
           'studentAge': age,
           'studentAddress': address,
-          });
+        });
         res = "suceess";
       } else {
         res = "All fields must be filled.";
@@ -106,5 +100,14 @@ class StudentController {
     return res;
   }
 
-
+  Future<String> deleteStudent(String studentId) async {
+    String res = "";
+    try {
+      await _fireStore.collection('students').doc(studentId).delete();
+      res = "success";
+    } catch (e) {
+      res = e.toString();
+    }
+    return res;
+  }
 }
