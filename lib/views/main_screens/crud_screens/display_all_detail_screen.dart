@@ -1,4 +1,4 @@
-import 'package:basic_crud_application/views/main_screens/crud_screens/delete_dailogbox.dart';
+import 'package:basic_crud_application/views/main_screens/dailogbox/delete_dailogbox.dart';
 import 'package:basic_crud_application/views/main_screens/crud_screens/update_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,11 +29,11 @@ class DisplayAllDetails extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  onPressed: () async {
+                  onPressed: ()  {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return ShowDailogBox(studentData: studentData,);
+                        return DeleteDailogbox(studentData: studentData,);
                       },
                     );
                   },

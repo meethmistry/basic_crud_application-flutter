@@ -1,5 +1,6 @@
 import 'package:basic_crud_application/views/main_screens/crud_screens/display_all_detail_screen.dart';
 import 'package:basic_crud_application/views/main_screens/crud_screens/insert_screen.dart';
+import 'package:basic_crud_application/views/main_screens/dailogbox/update_or_delete_box.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,14 @@ class _StudentsScreenState extends State<StudentsScreen> {
                     ),
                   );
                 },
-                onLongPress: () {},
+                onLongPress: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return UpdateOrDeleteBox(studentData: studentData,);
+                      },
+                    );
+                },
                 child: Container(
                   height: 75,
                   width: MediaQuery.sizeOf(context).width - 20,

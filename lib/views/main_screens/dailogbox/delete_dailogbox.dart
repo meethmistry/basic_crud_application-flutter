@@ -3,15 +3,15 @@ import 'package:basic_crud_application/views/main_screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-class ShowDailogBox extends StatefulWidget {
-  const ShowDailogBox({super.key, this.studentData});
+class DeleteDailogbox extends StatefulWidget {
+  const DeleteDailogbox({super.key, this.studentData});
   final dynamic studentData;
 
   @override
-  State<ShowDailogBox> createState() => _ShowDailogBoxState();
+  State<DeleteDailogbox> createState() => _DeleteDailogboxState();
 }
 
-class _ShowDailogBoxState extends State<ShowDailogBox> {
+class _DeleteDailogboxState extends State<DeleteDailogbox> {
   final StudentController _auth = StudentController();
 
   showSnake(String msg, Color color) {
@@ -39,7 +39,7 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
           color: Colors.lightBlueAccent,
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Text(
+        child: const Text(
           "Sure! you want to delete student.",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -58,7 +58,7 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
                 Navigator.of(context).pop();
               },
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 alignment: Alignment.center,
                 height: 45,
                 width: 80,
@@ -66,7 +66,7 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
                   color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(
+                child: const Text(
                   "No",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -91,12 +91,12 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
                 EasyLoading.dismiss();
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return MainHomeScreen();
+                    return const MainHomeScreen();
                   },
                 ));
               },
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 alignment: Alignment.center,
                 height: 45,
                 width: 80,
@@ -104,7 +104,7 @@ class _ShowDailogBoxState extends State<ShowDailogBox> {
                   color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(
+                child: const Text(
                   "Yes",
                   textAlign: TextAlign.center,
                   style: TextStyle(
